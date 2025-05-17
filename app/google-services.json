@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "33865617486",
+    "firebase_url": "https://enset2025-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "enset2025",
+    "storage_bucket": "enset2025.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33865617486:android:32162d8c159390435ab31f",
+        "android_client_info": {
+          "package_name": "com.example.quizapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCO-Rq5O6QTbjSMVxFA70TMLII0xvY7pyY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

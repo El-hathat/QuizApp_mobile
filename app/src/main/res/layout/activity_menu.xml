@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/menu"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Menu">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="30dp"
+        >
+
+        <TextView
+            android:id="@+id/dynamiclyt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:height="40dp"
+
+            android:background="@drawable/roud_bg2"
+            android:text="Dynamic Mode" />
+
+        <TextView
+            android:id="@+id/staticlyt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:height="40dp"
+            android:background="@drawable/roud_bg1"
+            android:text="Static Mode" />
+    </LinearLayout>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingTop="5dp">
+
+        <LinearLayout
+                android:id="@+id/stlytvsbl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                 android:gravity="center"
+                android:paddingRight="5dp"
+                >
+                <ImageView
+                    android:id="@+id/stimg"
+                    android:layout_width="400dp"
+                    android:layout_height="180dp"
+                    android:src="@drawable/loading"
+                    >
+                </ImageView>
+                <TextView
+                    android:id="@+id/stimgtxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Culture Generale"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    />
+            </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lytignore1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingRight="5dp"
+           >
+            <ImageView
+                android:id="@+id/l1image"
+                android:layout_width="400dp"
+                android:layout_height="180dp"
+                android:src="@drawable/loading"
+                >
+            </ImageView>
+            <TextView
+                android:id="@+id/l1txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sciences"
+                android:textStyle="bold"
+                android:gravity="center"
+                />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/lytignore2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:gravity="center"
+            android:paddingRight="5dp"
+            >
+            <ImageView
+                android:id="@+id/l2image"
+                android:layout_width="400dp"
+                android:layout_height="180dp"
+                android:src="@drawable/loading"
+                >
+            </ImageView>
+            <TextView
+                android:id="@+id/l2txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Histoire"
+                android:gravity="center"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+        
+
+
+    
+    </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
