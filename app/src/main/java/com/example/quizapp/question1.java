@@ -15,11 +15,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.quizapp.model.Question;
+import com.example.quizapp.model.ScoreValue;
 
 import java.util.List;
 
 public class question1 extends AppCompatActivity {
-int score=0;
+ScoreValue score=new ScoreValue();
 
     private void checkAnswer(int index) {
         RadioGroup optionsGroup = findViewById(R.id.idRadioGroup);
@@ -43,9 +44,10 @@ int score=0;
 
 
             if (selectedIndex == index) {
-                 score +=10;
+
+                 score.setScore(score.getScore() +10);
                 Intent i1 = new Intent(question1.this, question2.class);
-                i1.putExtra("score", score);
+                i1.putExtra("score", score.getScore());
                 i1.putExtra("login",getIntent().getStringExtra("login"));
                 startActivity(i1);
                 finish();

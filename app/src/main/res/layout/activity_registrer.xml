@@ -29,12 +29,11 @@ tools:context=".registrer">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:drawableLeft="@android:drawable/ic_dialog_email"
+        android:drawableLeft="@android:drawable/ic_menu_my_calendar"
         android:drawablePadding="10dp"
         android:drawableTint="#37B1D0"
         android:hint="Name"
-        android:inputType="textPersonName">
-    </EditText>
+        android:inputType="textPersonName"></EditText>
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"

@@ -24,6 +24,7 @@ public class score extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_score);
+
         AppDatabase db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "historique_db").allowMainThreadQueries().build(); // pour test rapide
 
@@ -49,6 +50,7 @@ logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i1= new Intent(score.this,Menu.class);
+                i1.putExtra("login",getIntent().getStringExtra("login"));
                 startActivity(i1);
 
             }
@@ -70,8 +72,8 @@ logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i1= new Intent(score.this,Top5.class);
-                i1.putExtra("login",getIntent().getStringExtra("login"));
                 startActivity(i1);
+
             }
         });
 
@@ -96,4 +98,7 @@ logout.setOnClickListener(new View.OnClickListener() {
         animator.start();
 
     }
+
+
+
 }

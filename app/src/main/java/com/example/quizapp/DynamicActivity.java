@@ -210,6 +210,7 @@ package com.example.quizapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -240,9 +241,10 @@ public class DynamicActivity extends AppCompatActivity {
     private List<Question> questionList;
     private int incr = 0;
     private int score = 0;
-    private TextView title;
+    private TextView title,timerTextView;
     private Button btnNext;
     private String categoryKey;
+    private CountDownTimer countDownTimer;
 
     private void checkAnswer(int index, List<Question> qst) {
         RadioGroup optionsGroup = findViewById(R.id.idRadioGroup);
@@ -372,6 +374,8 @@ public class DynamicActivity extends AppCompatActivity {
         } else {
             questionImage.setVisibility(View.GONE);
         }
+
+        startTimer();
     }
 
     @Override
@@ -379,6 +383,7 @@ public class DynamicActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_dynamic);
+        timerTextView = findViewById(R.id.timerext);
 
         // Initialize Firebase with logging
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -427,16 +432,60 @@ public class DynamicActivity extends AppCompatActivity {
                         // All questions finished, show score
                         Intent i1 = new Intent(DynamicActivity.this, score.class);
                         i1.putExtra("score", (score * 100) / (questionList.size()*10));
+                        saveScoreToFirebase(getIntent().getStringExtra("login"),(score * 100) / (questionList.size()*10));
                         i1.putExtra("category", categoryKey); // Pass category to score screen
                         i1.putExtra("login",ii1.getStringExtra("login"));
                         startActivity(i1);
                         finish(); // Close this activity
                     }
+                    cancelTimer();
                 }
             }
         });
 
         // Fetch questions from Firebase
         fetchQuestions();
+    }
+
+
+
+
+    private void startTimer() {
+        countDownTimer = new CountDownTimer(15000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                timerTextView.setText("Time left: " + millisUntilFinished / 1000 + "s");
+            }
+
+            public void onFinish() {
+
+                    incr++;
+
+                    if (incr < questionList.size()) {
+                        title.setText("Question " + (incr + 1));
+                        loadQuestion(incr, questionList);
+                    } else {
+                        // All questions finished, show score
+                        Intent i1 = new Intent(DynamicActivity.this, score.class);
+                        i1.putExtra("score", (score * 100) / (questionList.size()*10));
+                        i1.putExtra("category", categoryKey); // Pass category to score screen
+                        i1.putExtra("login",getIntent().getStringExtra("login"));
+                        startActivity(i1);
+                        finish(); // Close this activity
+                    }
+            }
+        }.start();
+    }
+
+    private void cancelTimer() {
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
+    }
+
+    public void saveScoreToFirebase(String email, int score) {
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("scores");
+        String encodedEmail = email.replace(".", "_"); // Firebase n'accepte pas les points dans les clés
+
+        dbRef.child(encodedEmail).child("scores").push().setValue(score);
     }
 }

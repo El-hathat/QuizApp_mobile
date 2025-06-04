@@ -9,12 +9,24 @@ android:layout_height="match_parent"
 android:orientation="vertical"
 tools:context=".DynamicActivity">
 
+    <TextView
+        android:id="@+id/timerext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="Time left: 15s"
+        android:textSize="20sp"
+        android:textColor="#FF5722"
+        android:textStyle="bold"
+        />
 <TextView
     android:id="@+id/titleText"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_marginTop="30dp"
+    android:layout_marginTop="5dp"
     android:gravity="center"
     android:text="..."
     android:textColor="@color/colorPrimaryDark"

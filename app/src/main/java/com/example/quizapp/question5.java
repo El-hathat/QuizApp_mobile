@@ -14,10 +14,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.quizapp.model.ScoreValue;
+
 public class question5 extends AppCompatActivity {
 
-    int score=0;
-
+    ScoreValue score=new ScoreValue();
     private void checkAnswer(int index) {
         RadioGroup optionsGroup = findViewById(R.id.idRadioGroup);
         int selectedId = optionsGroup.getCheckedRadioButtonId();
@@ -40,7 +41,7 @@ public class question5 extends AppCompatActivity {
 
 
             if (selectedIndex == index) {
-                score += 10;
+                score.setScore(score.getScore() +10);
             }
         } else {
             Toast.makeText(this, "Veuillez sélectionner une réponse !", Toast.LENGTH_SHORT).show();
@@ -60,9 +61,9 @@ public class question5 extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent i1 = new Intent(question5.this, score.class);
-                score+=i1.getIntExtra("score",0);
+              //  score+=i1.getIntExtra("score",0);
                 checkAnswer(1);
-                i1.putExtra("score", (score*100)/50);
+                i1.putExtra("score", (score.getScore()*100)/50);
                 i1.putExtra("login",getIntent().getStringExtra("login"));
                 i1.putExtra("category","Maroc_Cluture");
                 startActivity(i1);
